@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {ownSpot, giveSpot} from '../actions/spots'
+import {ownSpot, giveSpot, takeSpot} from '../actions/spots'
 import getFreeSpots from '../selectors/spots'
 import moment from 'moment'
 
@@ -15,6 +15,9 @@ const Spot = ({number,owner,dispatch, actualDate, freeOn}) => (
         <button onClick={() => {
                 dispatch(giveSpot({number, freeOn: actualDate}))
             }}>give</button>
+        <button onClick={() => {
+                dispatch(takeSpot({number, takenOn: actualDate, takenBy: 'Maddin'}))
+            }}>take</button> 
     </div>
 )
 

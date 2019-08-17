@@ -3,15 +3,12 @@ import moment from 'moment'
 //spotsReducer
 const spotsDefaultState = []
 
-for(let i=1; i <= 10; i++){
+for(let i=1; i <= 20; i++){
     spotsDefaultState.push({
         number: i,
         owner: '',
         freeOn: [],
-        taken: [
-            // takenBy: '',
-            // takenOn: 0
-        ]
+        taken: []
     })
 }
 
@@ -64,23 +61,23 @@ export default (state = spotsDefaultState, action) => {
                         return spot
                     }
                 })
-        case 'TAKE_SPOT_BACK':
+        case 'CANCEL_SPOT':
                 return state.map((spot) => {
                     if (spot.number === action.number){
                         return {
                             ...spot,
-                            freeOn: spot.freeOn.filter((freeOn) => freeOn !== action.freeOn)
+                            freeOn: spot.freeOn.filter((freeOn) => JSON.stringify(freeOn) !== JSON.stringify(action.freeOn))
                         }
                     } else {
                         return spot
                     }
                 })
-                case 'GIVE_SPOT_BACK':
+                case 'REJECT_SPOT':
                         return state.map((spot) => {
                             if (spot.number === action.number){
                                 return {
                                     ...spot,
-                                    taken: spot.taken.filter(({takenOn}) => takenOn !== action.takenOn)
+                                    taken: spot.taken.filter(({takenOn}) => JSON.stringify(takenOn) !== JSON.stringify(action.takenOn))
                                 }
                             } else {
                                 return spot

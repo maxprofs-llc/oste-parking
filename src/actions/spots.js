@@ -16,21 +16,21 @@ export const giveSpot = ({number, freeOn} = {}) => ({
     freeOn
 })
 //takeSpotBack
-export const takeSpotBack = ({number, freeOn} = {}) => ({
-    type: 'TAKE_SPOT_BACK',
+export const cancelSpot = ({number, freeOn} = {}) => ({
+    type: 'CANCEL_SPOT',
     number,
     freeOn
 })
 //take spot
-export const takeSpot = ({number, takenOn, takenBy = ''} = {}) => ({
+export const takeSpot = ({number, takenOn, takenBy} = {}) => ({
     type: 'TAKE_SPOT',
     number,
     takenOn,
     takenBy
 })
 //giveSpotBack
-export const giveSpotBack = ({number, takenOn, takenBy = ''} = {}) => ({
-    type: 'GIVE_SPOT_BACK',
+export const rejectSpot = ({number, takenOn, takenBy} = {}) => ({
+    type: 'REJECT_SPOT',
     number,
     takenOn,
     takenBy

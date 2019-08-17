@@ -6,9 +6,9 @@ import Spot from './Spot'
 const SpotsList = (props) => (
     <div style={{display: 'flex'}}>
         {props.spots.map((spot) => {
-            if(props.floor === 'u1' && spot.number <= 5 )
+            if(props.floor === 'u1' && spot.number <= 10 )
                 return <Spot {...spot} {...props.filters} key={spot.number}/>
-            else if (props.floor === 'u2' && spot.number >= 6 )
+            else if (props.floor === 'u2' && spot.number >=11 )
                 return <Spot {...spot} {...props.filters} key={spot.number}/>
         })}
     </div>
