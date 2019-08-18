@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SpotsList with spots 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+>
+  <Connect(Spot)
+    actualDate={"1970-01-01T00:00:02.000Z"}
+    freeDates={
+      Array [
+        "1970-01-01T00:00:03.000Z",
+        "1970-01-01T00:00:04.000Z",
+      ]
+    }
+    freeOn={
+      Array [
+        "1970-01-01T00:00:00.300Z",
+      ]
+    }
+    key="1"
+    number={1}
+    owner="Besitzer1"
+    taken={
+      Array [
+        Object {
+          "takenBy": "Egal",
+          "takenOn": "1970-01-01T00:00:00.400Z",
+        },
+      ]
+    }
+    takenDates={
+      Array [
+        "1970-01-01T00:00:00.300Z",
+        "1970-01-01T00:00:00.400Z",
+      ]
+    }
+  />
+  <Connect(Spot)
+    actualDate={"1970-01-01T00:00:02.000Z"}
+    freeDates={
+      Array [
+        "1970-01-01T00:00:03.000Z",
+        "1970-01-01T00:00:04.000Z",
+      ]
+    }
+    freeOn={
+      Array [
+        "1970-01-01T00:00:00.300Z",
+      ]
+    }
+    key="2"
+    number={2}
+    owner="Besitzer2"
+    taken={
+      Array [
+        Object {
+          "takenBy": "Egal",
+          "takenOn": "1970-01-01T00:00:00.400Z",
+        },
+      ]
+    }
+    takenDates={
+      Array [
+        "1970-01-01T00:00:00.300Z",
+        "1970-01-01T00:00:00.400Z",
+      ]
+    }
+  />
+  <Connect(Spot)
+    actualDate={"1970-01-01T00:00:02.000Z"}
+    freeDates={
+      Array [
+        "1970-01-01T00:00:03.000Z",
+        "1970-01-01T00:00:04.000Z",
+      ]
+    }
+    freeOn={
+      Array [
+        "1970-01-01T00:00:00.300Z",
+      ]
+    }
+    key="3"
+    number={3}
+    owner="Besitzer3"
+    taken={
+      Array [
+        Object {
+          "takenBy": "Egal",
+          "takenOn": "1970-01-01T00:00:00.400Z",
+        },
+      ]
+    }
+    takenDates={
+      Array [
+        "1970-01-01T00:00:00.300Z",
+        "1970-01-01T00:00:00.400Z",
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`should render SpotsList without spots 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+/>
+`;

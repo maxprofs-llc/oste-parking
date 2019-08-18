@@ -2,7 +2,7 @@ import moment from 'moment'
 
 //filtersReducer
 const filtersDefaultState = {
-    actualDate: moment(0),
+    actualDate: moment(),
     freeDates: [],
     takenDates: []
 }

@@ -5,7 +5,6 @@ import {SingleDatePicker} from 'react-dates'
 import { setActualDate, setStartDate, setEndDate } from '../actions/filters';
 import getFreeSpots from '../selectors/spots'
 import {ownSpot, giveSpot} from '../actions/spots'
-import 'react-dates/lib/css/_datepicker.css'
 
 
 class DatePicker extends React.Component {

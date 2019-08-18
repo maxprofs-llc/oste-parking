@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render free Spot correctly 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "background": "lightgreen",
+      "display": "flex",
+      "flexDirection": "column",
+      "height": 150,
+      "justifyContent": "center",
+      "margin": 5,
+      "width": 150,
+    }
+  }
+>
+  <p
+    style={
+      Object {
+        "margin": 0,
+      }
+    }
+  >
+    1
+  </p>
+  <p
+    style={
+      Object {
+        "margin": 0,
+      }
+    }
+  >
+    Besitzer1
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    own
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    give
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    take
+  </button>
+</div>
+`;

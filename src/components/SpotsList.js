@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Spot from './Spot'
 
 
-const SpotsList = (props) => (
+export const SpotsList = (props) => (
     <div style={{display: 'flex'}}>
         {props.spots.map((spot) => {
             if(props.floor === 'u1' && spot.number <= 10 )
@@ -16,7 +16,6 @@ const SpotsList = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        //freeSpots: getFreeSpots(state.spots, state.filters)
         spots: state.spots,
         filters: state.filters
     }
