@@ -1,3 +1,5 @@
+import database from '../firebase/firebase'
+
 //own spot
 export const ownSpot = ({owner = '', number} = {}) => ({
     type: 'OWN_SPOT',
@@ -34,4 +36,9 @@ export const rejectSpot = ({number, takenOn, takenBy} = {}) => ({
     number,
     takenOn,
     takenBy
+})
+
+export const getSpots = (spots) => ({
+    type: 'GET_SPOTS',
+    spots
 })
