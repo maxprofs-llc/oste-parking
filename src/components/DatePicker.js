@@ -2,10 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import moment from 'moment'
 import {SingleDatePicker} from 'react-dates'
-import { setActualDate, setStartDate, setEndDate } from '../actions/filters';
-import getFreeSpots from '../selectors/spots'
-import {ownSpot, giveSpot} from '../actions/spots'
-
+import { setActualDate} from '../actions/filters';
 
 class DatePicker extends React.Component {
    
@@ -14,11 +11,10 @@ class DatePicker extends React.Component {
         calendarFocused: true
     }
 
- 
     onDateChange = (date) => {
         if(date){
             this.setState(() => ({date}))
-            this.props.dispatch(setActualDate(date))
+            this.props.dispatch(setActualDate(date.valueOf()))
         }
     }
 
@@ -31,8 +27,7 @@ class DatePicker extends React.Component {
     }
 
     highlightDays = (day) => {
-
-        return this.props.filters.freeDates.some((date) => day.isSame(date, 'day'))
+        return this.props.filters.freeDates.some((date) => day.isSame(moment(date), 'day'))
     }
 
     onFocusChange = ({focused}) => {

@@ -1,44 +1,53 @@
 import database from '../firebase/firebase'
 
 //own spot
-export const ownSpot = ({owner = '', number} = {}) => ({
+export const ownSpot = ({owner = '', id} = {}) => ({
     type: 'OWN_SPOT',
-    number,
+    id,
     owner
 })
-//release spot
-export const releaseSpot = (number) => ({
-    type: 'RELEASE_SPOT',
-    number
-})
+
+export const startOwnSpot = ({id, owner} = {}) => {
+    return (dispatch) => {
+        dispatch(ownSpot({id,owner}))
+        return database.ref(`spots/${id}/owner`).set(owner)
+    }
+}
 //give spot
-export const giveSpot = ({number, freeOn} = {}) => ({
+export const giveSpot = ({id, freeOn} = {}) => ({
     type: 'GIVE_SPOT',
-    number,
+    id,
     freeOn
 })
-//takeSpotBack
-export const cancelSpot = ({number, freeOn} = {}) => ({
-    type: 'CANCEL_SPOT',
-    number,
-    freeOn
-})
-//take spot
-export const takeSpot = ({number, takenOn, takenBy} = {}) => ({
-    type: 'TAKE_SPOT',
-    number,
-    takenOn,
-    takenBy
-})
-//giveSpotBack
-export const rejectSpot = ({number, takenOn, takenBy} = {}) => ({
-    type: 'REJECT_SPOT',
-    number,
-    takenOn,
-    takenBy
-})
+
+export const startGiveSpot = ({id, freeOn} = {}) => {
+    return (dispatch) => {
+        dispatch(giveSpot({id,freeOn}))
+        return database.ref(`spots/${id}/freeOn`).push(freeOn).then(() => {
+             database.ref('freeDates').push(freeOn).then(() => {
+            })
+        })
+    }
+}
 
 export const getSpots = (spots) => ({
     type: 'GET_SPOTS',
     spots
 })
+
+export const startGetSpots = () => {
+    return (dispatch) => {
+       return database.ref('spots').once('value').then((snapshot) => {
+        const spots = []
+            snapshot.forEach((child) => {
+                spots.push({
+                    id: child.key,
+                    owner: child.val().owner,
+                    number: child.val().number,
+                    freeOn: Object.values(child.val().freeOn), 
+                })
+            })
+            dispatch(getSpots(spots))
+        })
+    }
+}

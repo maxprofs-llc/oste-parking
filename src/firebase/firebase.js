@@ -14,44 +14,16 @@ firebase.initializeApp(config);
 
 const database = firebase.database()
 
-export {firebase, database as default}
+const auth = firebase.auth()
 
-// database.ref('spots/-LmjwVRzrGpJFPltvpGt').update({
-//     owner: 'Maddin'
-// })
-
-const spots = []
-
-    
-database.ref('spots').once('value').then((snapshot) => {
-    
-
-    snapshot.forEach((child) => {
-
-        spots.push({
-            id: child.key,
-            owner: child.val().owner,
-            number: child.val().number,
-            freeOn: Object.values(child.val().freeOn), 
-            taken: Object.values(child.val().taken) 
-        })
-
-    })
-    database.ref(`spots/${spots[1].id}/taken`).push({
-        By: 'karl',
-        On: 29
-    })
-})
+export {firebase, auth, database as default}
 
 
-console.log(spots);
 
-
-// for(let i=1; i <= 4; i++){
+// for(let i=1; i <= 20; i++){
 //     database.ref('spots').push({
 //         number: i,
 //         owner: '',
-//         freeOn: 0,
-//         taken: 0
+//         freeOn: 0
 //     })
 // }

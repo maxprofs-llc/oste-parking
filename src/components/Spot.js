@@ -1,36 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {ownSpot, giveSpot, takeSpot} from '../actions/spots'
+import {startOwnSpot, startGiveSpot} from '../actions/spots'
 import getFreeSpots from '../selectors/spots'
 import moment from 'moment'
 
 
-export const Spot = ({number,owner,actualDate,freeOn,setOwner,setFree,setTaken,taken}) => (
+export const Spot = ({number,id,owner,actualDate,freeOn,setOwner,setFree}) => (
     <div 
-    style={freeOn.some((date) => date.isSame(actualDate, 'day')) ? 
-    (taken.some((date) => date.takenOn.isSame(actualDate, 'day')) ? 
-    divStyleTaken : divStyleFree) 
-    : divStyle}
+    style={freeOn.some((date) => moment(date).isSame(moment(actualDate), 'day')) ? divStyleFree: divStyle}
+    //style={divStyle}
         >
         <p style={pStyle}>{number}</p>
         <p style={pStyle}>{owner}</p>
         <button onClick={() => {
-                setOwner({owner:'Tiffany', number})
+                setOwner({id,owner:'Tiffany'})
             }}>own</button>
         <button onClick={() => {
-                setFree({number, freeOn: actualDate})
+                setFree({id, freeOn: actualDate})
             }}>give</button>
-        <button onClick={() => {
-                setTaken({number, takenOn: actualDate, takenBy: 'Maddin'})
-            }}>take</button> 
     </div>
 )
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setOwner: (data) => dispatch(ownSpot(data)),
-        setFree: (data) => dispatch(giveSpot(data)),
-        setTaken: (data) => dispatch(takeSpot(data))
+        setOwner: (data) => dispatch(startOwnSpot(data)),
+        setFree: (data) => dispatch(startGiveSpot(data)),
     }
 }
 const divStyle = {
@@ -52,17 +46,6 @@ const divStyleFree = {
     height: 150,
     width: 150,
     background: 'lightgreen',
-    margin: 5
-}
-
-const divStyleTaken = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 150,
-    width: 150,
-    background: 'red',
     margin: 5
 }
 

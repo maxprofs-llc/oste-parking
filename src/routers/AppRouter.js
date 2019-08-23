@@ -1,28 +1,26 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
+import {Router, Route, Switch, Link} from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 import Floor from '../components/Floor'
-import WelcomePage from '../components/WelcomePage';
 import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
-import Header from '../components/Header';
-import EditSpot from '../components/EditSpot';
-import DatePicker from '../components/DatePicker'
+import SigIn from '../components/SignIn'
+import PrivateRoute from './PrivateRoute'
+
+export const history = createBrowserHistory()           //can call anywhere in app
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>              
         <div>
-        <Header/>
         <Switch>
-            <Route path='/' exact={true} component={WelcomePage} />
-            <Route path='/u1' component={Floor} />
-            <Route path='/u2' component={Floor} />
-            <Route path='/:spot' component={EditSpot} />
+            <Route path='/' exact={true} component={SigIn} />
+            <PrivateRoute path='/u1' component={Floor} />
+            <PrivateRoute path='/u2' component={Floor} />
             <Route path='/help' component={HelpPage} />
             <Route component={NotFoundPage} />
         </Switch>
-        <DatePicker/>
         </div>
-    </BrowserRouter>
+    </Router>
 )
 
 export default AppRouter
