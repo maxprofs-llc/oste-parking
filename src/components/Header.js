@@ -1,17 +1,33 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {startLogout} from '../actions/auth'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { startLogout } from '../actions/auth'
 
 
-export const Header = ({signOut}) => (
+export const Header = ({ signOut }) => (
     <header>
-        <h2>OSTE-B Parking App</h2>
-        {/* <NavLink to='/' exact={true} activeClassName='is-active'>SignIn </NavLink> */}
-        <NavLink to='/u1' activeClassName='is-active'>U1</NavLink>
-        <NavLink to='/u2' activeClassName='is-active'>U2</NavLink>
-        <NavLink to='/help' activeClassName='is-active'>Help</NavLink>
-        <button onClick={signOut}>SignOut</button>
+        <div className="header">
+            <div className="content_container">
+                <div className="header_content">
+                    <h1 className="header__title">oste parking</h1>
+                    <button className="button button--link" onClick={signOut}>Logout</button>
+                </div>
+            </div>
+        </div>
+        <div className="page-header">
+        <div className="header__link_button content_container" >
+            <Link className="header__link" to='/u1' >
+                <div className="u1">
+                    U1
+                </div>
+            </Link>
+            <Link className="header__link" to='/u2' >
+                <div className="u2">
+                    U2
+                </div>
+            </Link>
+        </div>
+        </div>
     </header>
 )
 

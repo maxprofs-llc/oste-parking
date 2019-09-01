@@ -7,8 +7,9 @@ export const ownSpot = ({owner = '', id} = {}) => ({
     owner
 })
 
-export const startOwnSpot = ({id, owner} = {}) => {
-    return (dispatch) => {
+export const startOwnSpot = ({id} = {}) => {
+    return (dispatch, getState) => {
+        const owner = getState().auth.name
         dispatch(ownSpot({id,owner}))
         return database.ref(`spots/${id}/owner`).set(owner)
     }

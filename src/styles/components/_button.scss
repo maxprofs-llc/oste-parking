@@ -1,0 +1,17 @@
+.button {
+    background: lighten($color: $oste-blue, $amount: 20);
+    border: none;
+    border-radius: 3px;
+    padding: $m-size $l-size;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-top: 10px;
+    color: white;
+    width: 20rem;
+}
+
+.button--link {
+    background: none;
+    font-size: 2.6rem;
+    font-weight: 500;
+}

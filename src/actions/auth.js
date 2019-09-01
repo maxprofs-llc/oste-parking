@@ -1,8 +1,9 @@
 import {auth} from '../firebase/firebase'
 
-export const login = (uid) => ({
+export const login = (uid, name) => ({
     type: 'LOGIN',
-    uid
+    uid,
+    name
 })
 
 export const startLogin = (email, password) => {
@@ -23,10 +24,16 @@ export const startLogout = () => {
     }
 }
 
-export const startCreate = () => {
-    return () => {
-        return auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .catch(e => console.log(e.message))
+export const startCreate = (email, password, name) => {
+    return (dispatch) => {
+        auth.createUserWithEmailAndPassword(email, password)
+        .then((res) => {
+            res.user.updateProfile({
+                displayName: name
+            }).then(() => {
+                dispatch(login(auth.currentUser.uid, auth.currentUser.displayName))
+            })
+        }).catch(e => console.log(e.message))
     }
 }
 

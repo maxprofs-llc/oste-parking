@@ -1,25 +1,70 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {startOwnSpot, startGiveSpot} from '../actions/spots'
+import { startOwnSpot, startGiveSpot } from '../actions/spots'
+import SpotModal from './SpotModal'
 import getFreeSpots from '../selectors/spots'
 import moment from 'moment'
 
+class Spot extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            open: false
+        }
+    }
 
-export const Spot = ({number,id,owner,actualDate,freeOn,setOwner,setFree}) => (
-    <div 
-    style={freeOn.some((date) => moment(date).isSame(moment(actualDate), 'day')) ? divStyleFree: divStyle}
-    //style={divStyle}
-        >
-        <p style={pStyle}>{number}</p>
-        <p style={pStyle}>{owner}</p>
-        <button onClick={() => {
-                setOwner({id,owner:'Tiffany'})
-            }}>own</button>
-        <button onClick={() => {
-                setFree({id, freeOn: actualDate})
-            }}>give</button>
-    </div>
-)
+    onSetOwner = () => {
+        this.props.setOwner({ id: this.props.id })
+    }
+    onSetFree = () => {
+        this.props.setFree({ id: this.props.id, freeOn: this.props.actualDate })
+    }
+    onOpen = () => {
+        this.setState(() => ({ open: true }))
+    }
+    onClose = () => {
+        this.setState(() => ({ open: false }))
+    }
+
+
+    render() {
+        return (
+            <div>
+                <div onClick={this.onOpen}
+                    style={this.props.freeOn.some((date) => moment(date).isSame(moment(this.props.actualDate), 'day')) ? divStyleFree : divStyle}
+                //style={divStyle}
+                >
+                    <p style={pStyle}>{this.props.number}</p>
+
+                </div>
+                <SpotModal
+                    open={this.state.open}
+                    onSetOwner={this.onSetOwner}
+                    onSetFree={this.onSetFree}
+                    owner={this.props.owner}
+                    onClose={this.onClose}
+                />
+            </div>
+        )
+    }
+}
+
+// export const Spot = ({number,id,owner,actualDate,freeOn,setOwner,setFree}) => (
+//     <div 
+//     style={freeOn.some((date) => moment(date).isSame(moment(actualDate), 'day')) ? divStyleFree: divStyle}
+//     //style={divStyle}
+//         >
+//         <p style={pStyle}>{number}</p>
+//         <p style={pStyle}>{owner}</p>
+//         <button onClick={() => {
+//                 setOwner({id})
+//             }}>own</button>
+//         <button onClick={() => {
+//                 setFree({id, freeOn: actualDate})
+//             }}>give</button>
+//             <SpotModal selected={true}/>
+//     </div>
+// )
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -53,5 +98,4 @@ const pStyle = {
     margin: 0
 }
 
-
-export default connect(undefined,mapDispatchToProps)(Spot)
+export default connect(undefined, mapDispatchToProps)(Spot)

@@ -1,0 +1,42 @@
+.header {
+    background: $dark-blue
+}
+
+.header__title {
+    color: white;
+    margin: 0;
+    font-size: 5rem;
+}
+
+.header_content{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: $m-size 0;
+}
+
+.header__link_button{
+    display: flex;
+}
+
+.header__link {
+    text-decoration: none;
+    font-size: 1.8rem;
+    div {
+        width: 80px;
+        height: 80px;
+        color: white;
+        align-items: center;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        margin: $s-size $s-size $m-size 0;
+    }
+}
+.u1{
+    background: blue;
+}
+
+.u2{
+    background: orange;
+}

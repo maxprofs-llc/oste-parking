@@ -1,0 +1,32 @@
+.box-layout {
+    background: url('/images/car2.jpg');
+    background-size:  cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.box-layout__box {
+    border-radius: 3px;
+    background: fade-out($color:  white, $amount: .15);
+    padding: $l-size $m-size;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 30rem;
+
+    input {
+        margin-bottom: 1rem;
+    }
+}
+
+.box-layout__title {
+    font-weight: bold;
+    font-size: 4rem;
+    margin-bottom: $l-size;
+    line-height: 1;
+    
+}

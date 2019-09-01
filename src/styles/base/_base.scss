@@ -3,9 +3,11 @@ html{
 }
 
 body {
+    color: $oste-blue;
     background: white;
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
+    line-height: 1.6;
 }
 
 button {
