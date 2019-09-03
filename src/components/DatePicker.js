@@ -52,6 +52,8 @@ class DatePicker extends React.Component {
             isDayHighlighted={this.highlightDays}
             keepOpenOnDateSelect={true}
             numberOfMonths={2}
+            orientation='horizontal'
+            anchorDirection='right'
             id='1'
         />
         )

@@ -1,18 +1,19 @@
 import React from 'react'
 import Modal from 'react-modal'
 
-const SpotModal = ({ open, onSetOwner, onSetFree, owner, onClose }) => (
+const SpotModal = ({ open, number, onSetOwner, onSetFree, owner, onClose }) => (
     <Modal
         isOpen={open}
         contentLabel="Selected Spot"
         onRequestClose={onClose}
         ariaHideApp={false}
+        closeTimeoutMS={200}
+        className="modal"
     >
-        <h3>Selected Spot</h3>
-        <p style={pStyle}>{owner}</p>
-        <button onClick={onSetOwner}>own</button>
-        <button onClick={onSetFree}>give</button>
-        <button onClick={onClose}>Close</button>
+        <p className="header__title" style={pStyle}>{number}</p>
+        <p className="header__title" style={pStyle}>{owner}</p>
+        <button className="button" onClick={onSetOwner}>Meiner!</button>
+        <button className="button" onClick={onSetFree}>Parken!</button>
     </Modal>
 )
 

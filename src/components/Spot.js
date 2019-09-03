@@ -43,28 +43,12 @@ class Spot extends React.Component {
                     onSetFree={this.onSetFree}
                     owner={this.props.owner}
                     onClose={this.onClose}
+                    number={this.props.number}
                 />
             </div>
         )
     }
 }
-
-// export const Spot = ({number,id,owner,actualDate,freeOn,setOwner,setFree}) => (
-//     <div 
-//     style={freeOn.some((date) => moment(date).isSame(moment(actualDate), 'day')) ? divStyleFree: divStyle}
-//     //style={divStyle}
-//         >
-//         <p style={pStyle}>{number}</p>
-//         <p style={pStyle}>{owner}</p>
-//         <button onClick={() => {
-//                 setOwner({id})
-//             }}>own</button>
-//         <button onClick={() => {
-//                 setFree({id, freeOn: actualDate})
-//             }}>give</button>
-//             <SpotModal selected={true}/>
-//     </div>
-// )
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -77,8 +61,8 @@ const divStyle = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 150,
-    width: 150,
+    height: 100,
+    width: 100,
     background: 'lightgrey',
     margin: 5
 }
@@ -88,14 +72,15 @@ const divStyleFree = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 150,
-    width: 150,
+    height: 100,
+    width: 100,
     background: 'lightgreen',
     margin: 5
 }
 
 const pStyle = {
-    margin: 0
+    margin: 0,
+    cursor: 'pointer'
 }
 
 export default connect(undefined, mapDispatchToProps)(Spot)
