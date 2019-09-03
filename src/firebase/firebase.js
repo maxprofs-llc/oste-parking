@@ -20,7 +20,7 @@ export {firebase, auth, database as default}
 
 
 
-// for(let i=1; i <= 20; i++){
+// for(let i=1; i <= 200; i++){
 //     database.ref('spots').push({
 //         number: i,
 //         owner: '',

@@ -1,4 +1,4 @@
 .spots {
-    display:flex;
-    flex-flow: wrap;
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
 }

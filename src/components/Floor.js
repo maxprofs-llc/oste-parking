@@ -3,7 +3,7 @@ import SpotsList from './SpotsList'
 
 
 const Floor = (props) => (
-    <div>
+    <div> 
         <SpotsList floor={props.match.path.substring(1,3)}/>
     </div>
 )

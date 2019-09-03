@@ -61,9 +61,10 @@ const divStyle = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
-    width: 100,
-    background: 'lightgrey',
+    height: 50,
+    width: 50,
+    color: 'white',
+    background: 'darkgrey',
     margin: 5
 }
 
@@ -72,8 +73,9 @@ const divStyleFree = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
-    width: 100,
+    color: 'white',
+    height: 50,
+    width: 50,
     background: 'lightgreen',
     margin: 5
 }

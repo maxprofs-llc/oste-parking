@@ -18,14 +18,6 @@ class DatePicker extends React.Component {
         }
     }
 
-    onNextMonthClick = (month) =>{
-
-    }
-
-    onPrevMonthClick = (month) => {
-
-    }
-
     highlightDays = (day) => {
         return this.props.filters.freeDates.some((date) => day.isSame(moment(date), 'day'))
     }
