@@ -1,4 +1,5 @@
 .spots {
+    width: 600px;
     display:grid;
     grid-template-columns: repeat(10, 1fr);
 }
@@ -9,8 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 50px;
+
     color: white;
     background: dimgray;
     border: solid 2px darkgrey;
