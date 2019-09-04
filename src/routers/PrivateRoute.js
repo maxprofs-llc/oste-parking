@@ -13,8 +13,8 @@ export const PrivateRoute = ({
             isAuthenticated ? (
                 <div>
                     <Header />
-                    <div className={'content_container'}>
-                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <div className='content_container'>
+                        <div className= 'main_content'>
                             <Component {...props}/>
                             <DatePicker />
                         </div>

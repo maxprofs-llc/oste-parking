@@ -4,10 +4,16 @@ import moment from 'moment'
 const filtersDefaultState = {
     actualDate: moment().valueOf(),
     freeDates: [],
+    spotOpen: false
 }
 
 export default (state = filtersDefaultState, action) => {
     switch (action.type){
+        case 'SET_SPOT_OPEN':
+            return {
+                ...state,
+                spotOpen: action.spotOpen
+            }
         case 'SET_ACTUAL_DATE':
             return {
                 ...state,

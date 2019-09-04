@@ -4,7 +4,7 @@ import Spot from './Spot'
 
 
 export const SpotsList = ({floor,spots,filters}) => (
-    <div className="spots content_container">
+    <div className="spots ">
         {spots.map((spot) => {
             if(floor === 'u1' && spot.number <= 100)
                 return <Spot {...spot} {...filters} key={spot.number}/>

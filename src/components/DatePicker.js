@@ -23,11 +23,12 @@ class DatePicker extends React.Component {
     }
 
     onFocusChange = ({focused}) => {
-        this.setState(() => ({calendarFocused:focused}))
+        // // this.setState(() => ({calendarFocused:focused}))
 
-        setTimeout(() => {
-            this.setState(() => ({calendarFocused:true}))
-        }, 1)
+        // setTimeout(() => {
+        // console.log(!this.props.filters.spotOpen);
+        // this.setState(() => ({calendarFocused:!this.props.filters.spotOpen}))
+        // }, 50)
         
     }
 
@@ -37,7 +38,7 @@ class DatePicker extends React.Component {
         <SingleDatePicker
             date={this.state.date}
             onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
+            focused={!this.props.filters.spotOpen}
             onFocusChange={this.onFocusChange}
             onNextMonthClick={this.onNextMonthClick}
             onPrevMonthClick={this.onPrevMonthClick}

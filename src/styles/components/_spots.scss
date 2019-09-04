@@ -2,3 +2,32 @@
     display:grid;
     grid-template-columns: repeat(10, 1fr);
 }
+
+.spotdiv {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    color: white;
+    background: darkgrey;
+    margin: 5px;
+}
+
+.spotdiv--free{
+    background: lightgreen
+}
+
+// .spotdiv__free {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     height: 50px;
+//     width: 50px;
+//     color: white;
+//     background: lightgreen;
+//     margin: 5px;
+// }

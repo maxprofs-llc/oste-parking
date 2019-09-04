@@ -1,5 +1,11 @@
 .content_container {
-    max-width: 80vw;
+    max-width: 90vw;
     margin: 0 auto;
     padding: 0 $m-size;
+}
+
+.main_content{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
 }

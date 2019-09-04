@@ -1,5 +1,10 @@
 import database from '../firebase/firebase'
 
+export const setSpotOpen = (spotOpen) => ({
+    type: 'SET_SPOT_OPEN',
+    spotOpen
+})
+
 //setActualdate
 export const setActualDate = (actualDate) => ({
     type: 'SET_ACTUAL_DATE',

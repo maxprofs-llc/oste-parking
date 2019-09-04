@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startOwnSpot, startGiveSpot } from '../actions/spots'
+import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
-import getFreeSpots from '../selectors/spots'
 import moment from 'moment'
 
 class Spot extends React.Component {
@@ -21,9 +21,11 @@ class Spot extends React.Component {
     }
     onOpen = () => {
         this.setState(() => ({ open: true }))
+        this.props.setOpen(true)
     }
     onClose = () => {
         this.setState(() => ({ open: false }))
+        this.props.setOpen(false)
     }
 
 
@@ -31,10 +33,12 @@ class Spot extends React.Component {
         return (
             <div>
                 <div onClick={this.onOpen}
-                    style={this.props.freeOn.some((date) => moment(date).isSame(moment(this.props.actualDate), 'day')) ? divStyleFree : divStyle}
-                //style={divStyle}
+                className={
+                    (this.props.freeOn.some((date) => moment(date).isSame(moment(this.props.actualDate), 'day')) 
+                    ? 
+                    'spotdiv spotdiv--free' : 'spotdiv')}
                 >
-                    <p style={pStyle}>{this.props.number}</p>
+                    <p>{this.props.number}</p>
 
                 </div>
                 <SpotModal
@@ -54,35 +58,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setOwner: (data) => dispatch(startOwnSpot(data)),
         setFree: (data) => dispatch(startGiveSpot(data)),
+        setOpen: (data) => dispatch(setSpotOpen(data))
     }
 }
-const divStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    width: 50,
-    color: 'white',
-    background: 'darkgrey',
-    margin: 5
-}
 
-const divStyleFree = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    height: 50,
-    width: 50,
-    background: 'lightgreen',
-    margin: 5
-}
-
-const pStyle = {
-    margin: 0,
-    cursor: 'pointer'
-}
 
 export default connect(undefined, mapDispatchToProps)(Spot)
