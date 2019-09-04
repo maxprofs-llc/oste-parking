@@ -6,6 +6,20 @@
 
 .main_content{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin: 0;
 }
+
+@media (max-width: 1400px){
+    .main_content {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .content_container {
+        max-width: 100vw;
+    }
+}
+
