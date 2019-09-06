@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 
-const SpotModal = ({ open, number, onSetOwner, onSetFree, owner, onClose }) => (
+const SpotModal = ({ open, number, onSetOwner, onSetFree, owner, onClose, ownerid, uid }) => (
     <Modal
         isOpen={open}
         contentLabel="Selected Spot"
@@ -11,9 +11,10 @@ const SpotModal = ({ open, number, onSetOwner, onSetFree, owner, onClose }) => (
         className="modal"
     >
         <p className="header__title" style={pStyle}>{number}</p>
-        <p className="header__title" style={pStyle}>{owner}</p>
-        <button className="button" onClick={onSetOwner}>Meiner!</button>
-        <button className="button" onClick={onSetFree}>Parken!</button>
+        <p className="header__title" style={pStyle}>gehört</p>
+        <p className="header__title" style={pStyle}>{owner || 'niemand'}</p>
+        {uid !== ownerid && <button className="button" disabled={false} onClick={onSetOwner}>Meiner!</button>}
+        {uid === ownerid && <button className="button" onClick={onSetFree}>Geben!</button>}
     </Modal>
 )
 

@@ -28,7 +28,7 @@ class Spot extends React.Component {
         this.props.setOpen(false)
     }
 
-
+    
     render() {
         return (
             <div>
@@ -46,6 +46,8 @@ class Spot extends React.Component {
                     onSetOwner={this.onSetOwner}
                     onSetFree={this.onSetFree}
                     owner={this.props.owner}
+                    uid={this.props.uid}
+                    ownerid={this.props.ownerid}
                     onClose={this.onClose}
                     number={this.props.number}
                 />

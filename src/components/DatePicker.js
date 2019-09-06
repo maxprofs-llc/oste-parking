@@ -32,7 +32,6 @@ class DatePicker extends React.Component {
         
     }
 
-
     render(){
         return(
         <SingleDatePicker

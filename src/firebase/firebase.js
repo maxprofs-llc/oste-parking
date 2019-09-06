@@ -24,6 +24,7 @@ export {firebase, auth, database as default}
 //     database.ref('spots').push({
 //         number: i,
 //         owner: '',
+//         ownerid:'',
 //         freeOn: 0
 //     })
 // }

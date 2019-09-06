@@ -10,8 +10,10 @@ export const ownSpot = ({owner = '', id} = {}) => ({
 export const startOwnSpot = ({id} = {}) => {
     return (dispatch, getState) => {
         const owner = getState().auth.name
+        const uid = getState().auth.uid
         dispatch(ownSpot({id,owner}))
-        return database.ref(`spots/${id}/owner`).set(owner)
+        database.ref(`spots/${id}/owner`).set(owner)
+        database.ref(`spots/${id}/ownerid`).set(uid)
     }
 }
 //give spot
@@ -38,17 +40,19 @@ export const getSpots = (spots) => ({
 
 export const startGetSpots = () => {
     return (dispatch) => {
-       return database.ref('spots').once('value').then((snapshot) => {
+        const spotAnswer = database.ref('spots').once('value').then((snapshot) => {
         const spots = []
             snapshot.forEach((child) => {
                 spots.push({
                     id: child.key,
                     owner: child.val().owner,
+                    ownerid: child.val().ownerid,
                     number: child.val().number,
                     freeOn: Object.values(child.val().freeOn), 
                 })
             })
             dispatch(getSpots(spots))
         })
+        return spotAnswer 
     }
 }

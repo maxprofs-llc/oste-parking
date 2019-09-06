@@ -5,6 +5,7 @@
 }
 
 .main_content{
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,8 +15,8 @@
 @media (max-width: 1400px){
     .main_content {
         flex-direction: column;
-        justify-content: flex-end;
         align-items: center;
+        justify-content: space-between;
     }
 
     .content_container {
