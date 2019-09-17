@@ -3,13 +3,13 @@ import {connect} from 'react-redux'
 import Spot from './Spot'
 
 
-export const SpotsList = ({floor,spots,filters}) => (
+export const SpotsList = ({floor,spots,filters,uid}) => (
     <div className="spots ">
         {spots.map((spot) => {
             if(floor === 'u1' && spot.number <= 100)
-                return <Spot {...spot} {...filters} key={spot.number}/>
+                return <Spot {...spot} {...filters} uid={uid} key={spot.number}/>
             else if (floor === 'u2' && spot.number >=101 )
-                return <Spot {...spot} {...filters} key={spot.number}/>
+                return <Spot {...spot} {...filters} uid={uid} key={spot.number}/>
         })}
     </div>
 )
@@ -17,7 +17,8 @@ export const SpotsList = ({floor,spots,filters}) => (
 const mapStateToProps = (state) => {
     return {
         spots: state.spots,
-        filters: state.filters
+        filters: state.filters,
+        uid: state.auth.uid
     }
 }
 

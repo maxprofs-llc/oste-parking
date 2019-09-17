@@ -23,7 +23,12 @@ const DatePicker = (props) => {
 
     }
 
+<<<<<<< HEAD
     return (
+=======
+    render(){
+        return(
+>>>>>>> ae68f8aef3bbff125cd0291e48a023d04d853ed3
         <SingleDatePicker
             date={date}
             onDateChange={onDateChange}

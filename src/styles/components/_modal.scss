@@ -23,6 +23,9 @@
     outline: solid darkgrey 10px;
     display: flex;
     flex-direction: column;
-    padding: 8rem 5rem 15rem 5rem;
+    align-items: center;
+   padding: 8rem 1rem 15rem 1rem;
+    word-break: break-all;
+    width: 40rem;
     text-align: center;
 }

@@ -1,20 +1,30 @@
 .spots {
+<<<<<<< HEAD
     width: 500px;
+=======
+    width: 600px;
+    height: 600px;
+>>>>>>> ae68f8aef3bbff125cd0291e48a023d04d853ed3
     display:grid;
-    grid-template-columns: repeat(10, 1fr);
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 70px);
+    grid-gap: 10px 20px;
 }
 
 .spotdiv {
     display: flex;
     cursor: pointer;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
-
+    // width: 40px;
+    // height: 60px;
     color: white;
     background: dimgray;
     border: solid 2px darkgrey;
-    margin: 5px;
+    // margin: 5px;
 }
 
 .spotdiv--free{

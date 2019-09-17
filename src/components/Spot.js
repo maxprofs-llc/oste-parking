@@ -24,6 +24,7 @@ const Spot = (props) => {
         props.setOpen(false)
     }
 
+<<<<<<< HEAD
     return (
         <div>
             <div onClick={onOpen}
@@ -33,6 +34,31 @@ const Spot = (props) => {
                         'spotdiv spotdiv--free' : 'spotdiv')}
             >
                 <p>{props.number}</p>
+=======
+    
+    render() {
+        return (
+            <div>
+                <div onClick={this.onOpen}
+                className={
+                    (this.props.freeOn.some((date) => moment(date).isSame(moment(this.props.actualDate), 'day')) 
+                    ? 
+                    'spotdiv spotdiv--free' : 'spotdiv')}
+                >
+                    <p>{this.props.number}</p>
+
+                </div>
+                <SpotModal
+                    open={this.state.open}
+                    onSetOwner={this.onSetOwner}
+                    onSetFree={this.onSetFree}
+                    owner={this.props.owner}
+                    uid={this.props.uid}
+                    ownerid={this.props.ownerid}
+                    onClose={this.onClose}
+                    number={this.props.number}
+                />
+>>>>>>> ae68f8aef3bbff125cd0291e48a023d04d853ed3
             </div>
             <SpotModal
                 open={open}
