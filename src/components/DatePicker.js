@@ -1,56 +1,43 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
-import {SingleDatePicker} from 'react-dates'
-import { setActualDate} from '../actions/filters';
+import { SingleDatePicker } from 'react-dates'
+import { setActualDate } from '../actions/filters';
 
-class DatePicker extends React.Component {
-   
-    state = {
-        date: moment(),
-        calendarFocused: true
-    }
+const DatePicker = (props) => {
 
-    onDateChange = (date) => {
-        if(date){
-            this.setState(() => ({date}))
-            this.props.dispatch(setActualDate(date.valueOf()))
+    const [date, setDate] = useState(moment())
+
+    const onDateChange = (date) => {
+        if (date) {
+            setDate(date)
+            props.dispatch(setActualDate(date.valueOf()))
         }
     }
 
-    highlightDays = (day) => {
-        return this.props.filters.freeDates.some((date) => day.isSame(moment(date), 'day'))
+    const highlightDays = (day) => {
+        return props.filters.freeDates.some((date) => day.isSame(moment(date), 'day'))
     }
 
-    onFocusChange = ({focused}) => {
-        // // this.setState(() => ({calendarFocused:focused}))
+    const onFocusChange = ({ focused }) => {
 
-        // setTimeout(() => {
-        // console.log(!this.props.filters.spotOpen);
-        // this.setState(() => ({calendarFocused:!this.props.filters.spotOpen}))
-        // }, 50)
-        
     }
 
-
-    render(){
-        return(
+    return (
         <SingleDatePicker
-            date={this.state.date}
-            onDateChange={this.onDateChange}
-            focused={!this.props.filters.spotOpen}
-            onFocusChange={this.onFocusChange}
-            onNextMonthClick={this.onNextMonthClick}
-            onPrevMonthClick={this.onPrevMonthClick}
-            isDayHighlighted={this.highlightDays}
+            date={date}
+            onDateChange={onDateChange}
+            focused={!props.filters.spotOpen}
+            onFocusChange={onFocusChange}
+            isDayHighlighted={highlightDays}
             keepOpenOnDateSelect={true}
             numberOfMonths={2}
             orientation='horizontal'
             anchorDirection='right'
             id='1'
         />
-        )
-    }
+    )
+
 }
 
 const mapStateToProps = (state) => ({

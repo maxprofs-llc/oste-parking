@@ -1,50 +1,45 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { startLogin, startLogout, startCreate, startVerify } from '../actions/auth'
 import { connect } from 'react-redux'
 
-export class SignIn extends React.Component {
+const SignIn = (props) => {
 
-    state = {
-        email: '',
-        name: '',
-        password: ''
-    }
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
 
-    onEmailChange = (e) => {
-        this.setState({ email: e.target.value })
+    const onEmailChange = (e) => {
+        setEmail(e.target.value)
     }
-    onPasswordChange = (e) => {
-        this.setState({ password: e.target.value })
+    const onPasswordChange = (e) => {
+        setPassword(e.target.value)
     }
-    onNameChange = (e) => {
-        this.setState({ name: e.target.value })
+    const onNameChange = (e) => {
+        setName(e.target.value)
     }
-    onCreate = () => {
-        this.props.create(this.state.email, this.state.password, this.state.name)
+    const onCreate = () => {
+        props.create(email, password, name)
     }
-    onSignIn = () => {
-        this.props.signIn(this.state.email, this.state.password)
+    const onSignIn = () => {
+        props.signIn(email, password)
     }
-    onVerify = () => {
-        this.props.verify()
+    const onVerify = () => {
+        props.verify()
     }
 
-
-    render() {
         return (
             <div className="box-layout">
                 <div className="box-layout__box">
                     <h1 className="box-layout__title">oste parking</h1>
-                    <input type='text' placeholder='E-Mail' onChange={this.onEmailChange} />
-                    <input type='password' placeholder='Passwort' onChange={this.onPasswordChange} />
-                    <input type='text' placeholder='Username' onChange={this.onNameChange} />
-                    <button className="button" onClick={this.onSignIn}>Einloggen</button>
-                    <button className="button" onClick={this.onCreate}>Registrieren</button>
-                    {/* <button onClick={this.onVerify}>Verify</button> */}
+                    <input type='text' placeholder='E-Mail' onChange={onEmailChange} />
+                    <input type='password' placeholder='Passwort' onChange={onPasswordChange} />
+                    <input type='text' placeholder='Username' onChange={onNameChange} />
+                    <button className="button" onClick={onSignIn}>Einloggen</button>
+                    <button className="button" onClick={onCreate}>Registrieren</button>
+                    {/* <button onClick={onVerify}>Verify</button> */}
                 </div>
             </div>
         )
-    }
 }
 
 const matchDispatchToProps = (dispatch) => ({

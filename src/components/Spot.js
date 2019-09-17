@@ -1,57 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { startOwnSpot, startGiveSpot } from '../actions/spots'
 import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
 import moment from 'moment'
 
-class Spot extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            open: false
-        }
+const Spot = (props) => {
+
+    const [open, setOpen] = useState(false)
+
+    const onSetOwner = () => {
+        props.setOwner({ id: props.id })
+    }
+    const onSetFree = () => {
+        props.setFree({ id: props.id, freeOn: props.actualDate })
+    }
+    const onOpen = () => {
+        setOpen(true)
+        props.setOpen(true)
+    }
+    const onClose = () => {
+        setOpen(false)
+        props.setOpen(false)
     }
 
-    onSetOwner = () => {
-        this.props.setOwner({ id: this.props.id })
-    }
-    onSetFree = () => {
-        this.props.setFree({ id: this.props.id, freeOn: this.props.actualDate })
-    }
-    onOpen = () => {
-        this.setState(() => ({ open: true }))
-        this.props.setOpen(true)
-    }
-    onClose = () => {
-        this.setState(() => ({ open: false }))
-        this.props.setOpen(false)
-    }
-
-
-    render() {
-        return (
-            <div>
-                <div onClick={this.onOpen}
+    return (
+        <div>
+            <div onClick={onOpen}
                 className={
-                    (this.props.freeOn.some((date) => moment(date).isSame(moment(this.props.actualDate), 'day')) 
-                    ? 
-                    'spotdiv spotdiv--free' : 'spotdiv')}
-                >
-                    <p>{this.props.number}</p>
-
-                </div>
-                <SpotModal
-                    open={this.state.open}
-                    onSetOwner={this.onSetOwner}
-                    onSetFree={this.onSetFree}
-                    owner={this.props.owner}
-                    onClose={this.onClose}
-                    number={this.props.number}
-                />
+                    (props.freeOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+                        ?
+                        'spotdiv spotdiv--free' : 'spotdiv')}
+            >
+                <p>{props.number}</p>
             </div>
-        )
-    }
+            <SpotModal
+                open={open}
+                onSetOwner={onSetOwner}
+                onSetFree={onSetFree}
+                owner={props.owner}
+                onClose={onClose}
+                number={props.number}
+            />
+        </div>
+    )
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -61,6 +53,5 @@ const mapDispatchToProps = (dispatch) => {
         setOpen: (data) => dispatch(setSpotOpen(data))
     }
 }
-
 
 export default connect(undefined, mapDispatchToProps)(Spot)
