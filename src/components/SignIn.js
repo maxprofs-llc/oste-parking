@@ -34,7 +34,8 @@ const SignIn = (props) => {
                     <input type='text' placeholder='E-Mail' onChange={onEmailChange} />
                     <input type='password' placeholder='Passwort' onChange={onPasswordChange} />
                     <input type='text' placeholder='Username' onChange={onNameChange} />
-                    <button className="button" onClick={onSignIn}>Einloggen</button>
+                    {/* <button className="button" onClick={onSignIn}>Einloggen</button> */}
+                    <button type="button" class="btn btn-primary btn-lg" onClick={onSignIn}>Einloggen</button>
                     <button className="button" onClick={onCreate}>Registrieren</button>
                     {/* <button onClick={onVerify}>Verify</button> */}
                 </div>
