@@ -16,7 +16,7 @@ export const SpotsList = ({floor,spots,filters,uid}) => (
         <div className="row">
           
             {spots.map((spot) => {
-                if(floor === 'u1' && spot.number <= 6)
+                if(floor === 'u1' && spot.number <= 12)
                     return <div className="col-sm" style={{backgroundColor: 'yellow'}}>50%</div>
         })}
         </div>
