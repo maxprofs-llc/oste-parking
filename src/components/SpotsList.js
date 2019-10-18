@@ -4,13 +4,22 @@ import Spot from './Spot'
 
 
 export const SpotsList = ({floor,spots,filters,uid}) => (
-    <div className="spots ">
-        {spots.map((spot) => {
-            if(floor === 'u1' && spot.number <= 100)
-                return <Spot {...spot} {...filters} uid={uid} key={spot.number}/>
-            else if (floor === 'u2' && spot.number >=101 )
-                return <Spot {...spot} {...filters} uid={uid} key={spot.number}/>
+    //<div className="spots ">
+      //  {spots.map((spot) => {
+        //    if(floor === 'u1' && spot.number <= 100)
+          //      return <Spot {...spot} {...filters} uid={uid} key={spot.number}/>
+            //else if (floor === 'u2' && spot.number >=101 )
+              //  return <Spot {...spot} {...filters} uid={uid} key={spot.number}/>
+        //})}
+    //</div>
+    <div className="container">
+        <div className="row">
+          
+            {spots.map((spot) => {
+                if(floor === 'u1' && spot.number <= 6)
+                    return <div className="col-sm" style={{backgroundColor: 'yellow'}}>50%</div>
         })}
+        </div>
     </div>
 )
 
